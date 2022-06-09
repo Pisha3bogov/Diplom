@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.StartWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.StartWindowController">
     <children>
         <Label layoutX="141.0" layoutY="132.0" text="Логин">
             <font>
@@ -29,17 +29,12 @@
             <font>
                 <Font size="14.0" />
             </font></TextField>
-        <Button layoutX="413.0" layoutY="317.0" mnemonicParsing="false" onAction="#OpenMain" prefHeight="35.0" prefWidth="83.0" text="Войти">
+        <Button layoutX="393.0" layoutY="300.0" mnemonicParsing="false" onAction="#OpenMain" prefHeight="35.0" prefWidth="83.0" text="Войти">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button layoutX="255.0" layoutY="317.0" mnemonicParsing="false" onAction="#Registration" prefHeight="35.0" prefWidth="106.0" text="Регистрация">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Button>
-        <Button layoutX="115.0" layoutY="317.0" mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="83.0" text="Выход">
+        <Button layoutX="183.0" layoutY="300.0" mnemonicParsing="false" onAction="#Exit" prefHeight="35.0" prefWidth="83.0" text="Выход">
             <font>
                 <Font size="14.0" />
             </font>
@@ -48,6 +43,5 @@
             <font>
                 <Font size="18.0" />
             </font></Label>
-        <Button layoutX="471.0" layoutY="212.0" mnemonicParsing="false" onAction="#ResetPassword" text="Восстановить" />
     </children>
 </AnchorPane>

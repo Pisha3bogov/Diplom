@@ -6,15 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -72,5 +70,40 @@ public class GeneralWindowController {
 
         tableView.setItems(hardwares);
 
+        styleRowColor();
+
+    }
+
+    private void styleRowColor() {
+        Callback<TableColumn<Hardware, String>, TableCell<Hardware, String>> cellFactory
+                =
+                new Callback<TableColumn<Hardware, String>, TableCell<Hardware, String>>() {
+                    @Override
+                    public TableCell<Hardware, String> call(final TableColumn<Hardware, String> param) {
+                        final TableCell<Hardware, String> cell = new TableCell<Hardware, String>() {
+
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    setText(item);
+                                    TableRow<Hardware> row = getTableRow();
+                                    if (row.getItem().getStatus().getName().equals("Занят")) {
+                                        row.getStyleClass().clear();
+                                        setStyle("-fx-background-color: green");
+                                    } else if (row.getItem().getStatus().getName().equals("Свободен")) {
+                                        row.getStyleClass().clear();
+                                        setStyle("-fx-background-color: yellow");
+                                    }
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        statusColumn.setCellFactory(cellFactory);
     }
 }

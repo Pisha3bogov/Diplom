@@ -19,15 +19,6 @@ public class Context {
         return con;
     }
 
-    private ResetPassword1Controller resPas;
-    public void setResPas(ResetPassword1Controller resPas) {
-        this.resPas = resPas;
-    }
-
-    public ResetPassword1Controller getResPas() {
-        return resPas;
-    }
-
     private StartWindowController startWin;
 
     public StartWindowController getStartWin() {
