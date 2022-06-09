@@ -13,10 +13,11 @@
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="175.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutY="39.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Button" />
-            <Button layoutY="69.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Button" />
-            <Button layoutY="99.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Button" />
-            <Button layoutY="129.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0" text="Button" />
+            <Button layoutY="38.0" mnemonicParsing="false" onAction="#openGeneralWindow" prefHeight="30.0" prefWidth="176.0" text="Компьютеры" />
+            <Button layoutY="79.0" mnemonicParsing="false" onAction="#openUsers" prefHeight="30.0" prefWidth="175.0" text="Пользователи" />
+            <Button layoutY="121.0" mnemonicParsing="false" onAction="#openShop" prefHeight="30.0" prefWidth="175.0" text="Магазин" />
+            <Button layoutY="162.0" mnemonicParsing="false" onAction="#openReports" prefHeight="30.0" prefWidth="175.0" text="Отчеты" />
+            <Button layoutY="469.0" mnemonicParsing="false" onAction="#exitOnAccount" prefHeight="30.0" prefWidth="175.0" text="Выход" />
          </children></AnchorPane>
    </left>
    <top>
