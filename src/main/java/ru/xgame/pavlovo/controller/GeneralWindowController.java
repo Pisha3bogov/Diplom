@@ -91,12 +91,16 @@ public class GeneralWindowController {
                                 } else {
                                     setText(item);
                                     TableRow<Hardware> row = getTableRow();
-                                    if (row.getItem().getStatus().getName().equals("Занят")) {
-                                        row.getStyleClass().clear();
-                                        setStyle("-fx-background-color: green");
-                                    } else if (row.getItem().getStatus().getName().equals("Свободен")) {
-                                        row.getStyleClass().clear();
-                                        setStyle("-fx-background-color: yellow");
+                                    try {
+                                        if (row.getItem().getStatus().getName().equals("Занят")) {
+                                            row.getStyleClass().clear();
+                                            setStyle("-fx-background-color: green");
+                                        } else if (row.getItem().getStatus().getName().equals("Свободен")) {
+                                            row.getStyleClass().clear();
+                                            setStyle("-fx-background-color: yellow");
+                                        }
+                                    } catch (NullPointerException e) {
+                                        System.out.println("Все в порядке, не парься");
                                     }
                                 }
                             }
