@@ -27,6 +27,8 @@
         <mapping class="ru.xgame.pavlovo.model.Hardware"/>
         <mapping class="ru.xgame.pavlovo.model.Status"/>
         <mapping class="ru.xgame.pavlovo.model.Admin"/>
+        <mapping class="ru.xgame.pavlovo.model.Reports"/>
+        <mapping class="ru.xgame.pavlovo.model.Order"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -32,4 +32,14 @@ public class Context {
     public Admin getAdmin(){
         return startWin.getAdmin();
     }
+
+    private TileProductController tileProductController;
+
+    public TileProductController getTileProductController() {
+        return tileProductController;
+    }
+
+    public void setTileProductController(TileProductController tileProductController) {
+        this.tileProductController = tileProductController;
+    }
 }

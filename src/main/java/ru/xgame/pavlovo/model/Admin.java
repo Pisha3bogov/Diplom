@@ -17,13 +17,13 @@ public class Admin {
     @Column(name = "id")
     private int id;
 
-    @Column
+    @Column(nullable = false)
     private String login;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private String priority;
 
     public Admin(String login, String password) {

@@ -8,7 +8,8 @@ import java.util.Set;
 
 
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User {
@@ -38,5 +39,8 @@ public class User {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
     private Sale sale;
+
+    @OneToMany(mappedBy = "user")
+    Set<Order> orders;
 
 }

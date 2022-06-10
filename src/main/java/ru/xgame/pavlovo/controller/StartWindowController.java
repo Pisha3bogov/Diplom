@@ -59,13 +59,6 @@ public class StartWindowController {
         }
     }
 
-    public void Registration(ActionEvent actionEvent) {
-        final Button source = (Button) actionEvent.getSource();
-        source.getScene().getWindow().hide();
-
-        openSceneRegistration();
-    }
-
     public void Exit(ActionEvent actionEvent) {
         final Button source = (Button) actionEvent.getSource();
         source.getScene().getWindow().hide();
@@ -90,13 +83,6 @@ public class StartWindowController {
 
     }
 
-    public void ResetPassword(ActionEvent actionEvent) {
-        final Button source = (Button) actionEvent.getSource();
-        source.getScene().getWindow().hide();
-
-        openSceneResetPassword();
-    }
-
     private void openSceneRegistration(){
         Stage stage = new Stage();
 
@@ -110,24 +96,6 @@ public class StartWindowController {
 
         stage.setTitle("Регистрация");
         assert root != null;
-        stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
-        stage.show();
-    }
-
-    private void openSceneResetPassword(){
-        Stage stage = new Stage();
-
-        Parent root = null;
-
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/resetPassword1.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        assert root != null;
-        stage.setTitle("Воставление пароля");
         stage.setScene(new Scene(root));
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
         stage.show();

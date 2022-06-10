@@ -1,12 +1,7 @@
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.xgame.pavlovo.model.Hardware;
-import ru.xgame.pavlovo.model.Sale;
-import ru.xgame.pavlovo.model.User;
-import ru.xgame.pavlovo.service.AdminService;
-import ru.xgame.pavlovo.service.HardwareService;
-import ru.xgame.pavlovo.service.SaleService;
-import ru.xgame.pavlovo.service.UserService;
+import ru.xgame.pavlovo.model.*;
+import ru.xgame.pavlovo.service.*;
 
 import java.util.List;
 
@@ -22,10 +17,20 @@ public class Test {
 
         HardwareService hardwareService = new HardwareService(factory);
 
-        List<Hardware> users = hardwareService.findAll();
+        OrderService orderService = new OrderService(factory);
 
-        for(Hardware user : users){
+        ShopService shopService = new ShopService(factory);
+
+        List<Order> users = orderService.findAll();
+
+        for(Order user : users){
             System.out.println(user);
         }
+
+//        Shop shop = shopService.findById("adrenaline");
+//
+//        Order order = new Order("shop",160,shop);
+//
+//        orderService.save(order);
     }
 }

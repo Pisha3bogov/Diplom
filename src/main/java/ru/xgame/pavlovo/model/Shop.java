@@ -3,10 +3,8 @@ package ru.xgame.pavlovo.model;
 import com.sun.istack.NotNull;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -22,4 +20,10 @@ public class Shop {
 
     @Column(name = "count",nullable = false)
     private int count;
+
+    @Column(name = "photo_path")
+    private String photoPath;
+
+    @OneToMany(mappedBy = "shop")
+    Set<Order> orders;
 }

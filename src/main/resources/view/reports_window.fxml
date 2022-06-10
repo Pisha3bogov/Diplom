@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -39,18 +40,21 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" prefHeight="527.0" prefWidth="909.0">
-              <columns>
-                <TableColumn fx:id="numberColumn" prefWidth="75.0" text="№" />
-                <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Тип" />
-                  <TableColumn fx:id="statusColumn" prefWidth="75.0" text="Статус" />
-                  <TableColumn fx:id="userNameColumn" prefWidth="143.0" text="Имя пользователя" />
-                  <TableColumn fx:id="userTimeSession" prefWidth="161.0" text="Время сессии" />
-                  <TableColumn fx:id="userFinalSession" prefWidth="163.0" text="Остаток времени" />
-                  <TableColumn fx:id="userBalance" prefWidth="102.0" text="Баланс" />
-                  <TableColumn fx:id="userSale" prefWidth="114.0" text="Скидка" />
-              </columns>
-            </TableView>
+            <Label layoutX="16.0" layoutY="66.0" text="Общая выручка" />
+            <Label fx:id="totalRevenue" layoutX="212.0" layoutY="66.0" />
+            <Label layoutX="16.0" layoutY="122.0" text="Выручка с пк" />
+            <Label fx:id="revenueOnPC" layoutX="212.0" layoutY="122.0" />
+            <Label layoutX="16.0" layoutY="181.0" text="Выручка с магазина" />
+            <Label fx:id="revenueOnShop" layoutX="212.0" layoutY="181.0" />
+            <LineChart fx:id="graphickRevenue" layoutX="279.0" layoutY="49.0" prefHeight="327.0" prefWidth="575.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Button layoutX="713.0" layoutY="384.0" mnemonicParsing="false" onAction="#endSession" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: RED;" text="Закончить смену" />
          </children>
       </AnchorPane>
    </center>

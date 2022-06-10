@@ -50,8 +50,6 @@ public class GeneralWindowController {
         hardwares.addAll(hardwareService.findAll());
 
         imageAccount.setImage(new Image(String.valueOf(getClass().getResource("/image/x_variable2.jpg"))));
-        imageAccount.setFitHeight(100);
-        imageAccount.setFitWidth(100);
 
         accountName.setText(Context.getInstance().getAdmin().getLogin());
 
