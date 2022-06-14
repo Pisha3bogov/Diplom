@@ -60,19 +60,28 @@ public class OrderWindowController implements Initializable {
     }
 
     public void addOrder(ActionEvent actionEvent) {
-        if(shop.getCount() > 0) {
-            exit(actionEvent);
+        if(Context.getInstance().getReports()!= null) {
+            if (shop.getCount() > 0) {
+                exit(actionEvent);
 
-            shop.setCount(shop.getCount() - count);
+                shop.setCount(shop.getCount() - count);
 
-            shopService.update(shop);
+                shopService.update(shop);
 
-            orderService.save(new Order("shop", cost, shop));
+                Order order = new Order("shop", cost,count, shop);
 
-            Context.getInstance().getTileProductController().setData(shop);
+                Context.getInstance().getOrders().add(order);
+
+                orderService.save(order);
+
+                Context.getInstance().getTileProductController().setData(shop);
+            } else {
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("Продукции нет в наличии");
+            }
         }else {
             errorLabel.setTextFill(Color.RED);
-            errorLabel.setText("Продукции нет в наличии");
+            errorLabel.setText("Смена не открыта");
         }
     }
 

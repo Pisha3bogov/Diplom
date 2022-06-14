@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -25,6 +26,9 @@ public class Order {
     @Column(nullable = false)
     private int cost;
 
+    @Column(nullable = false)
+    private int count;
+
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "shop")
     private Shop shop;
@@ -33,19 +37,21 @@ public class Order {
     @JoinColumn(name = "user")
     private User user;
 
-    @OneToMany(mappedBy = "order")
-    Set<Reports> reports;
+    @ManyToMany(mappedBy = "order")
+    private Set<Reports> reports = new HashSet<Reports>();
 
-    public Order(int id, String name, int cost, Shop shop_name_product) {
+    public Order(int id, String name, int cost,int count, Shop shop_name_product) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.shop = shop_name_product;
+        this.count = count;
     }
 
-    public Order(String name, int cost, Shop shop_name_product) {
+    public Order(String name, int cost,int count, Shop shop_name_product) {
         this.name = name;
         this.cost = cost;
+        this.count = count;
         this.shop = shop_name_product;
     }
 

@@ -1,7 +1,5 @@
 package ru.xgame.pavlovo.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,12 +14,17 @@ import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.xgame.pavlovo.model.Order;
-import ru.xgame.pavlovo.service.OrderService;
+import ru.xgame.pavlovo.model.Reports;
+import ru.xgame.pavlovo.service.ReportsService;
 
 import java.net.URL;
 import java.sql.Time;
+import java.time.Duration;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class ReportsWindowController implements Initializable {
     public Label totalRevenue;
@@ -35,13 +38,13 @@ public class ReportsWindowController implements Initializable {
 
     private int revenueShop = 0;
 
-    ObservableList<Order> orders = FXCollections.observableArrayList();
+    private final ReportsService reportsService;
 
-    private final OrderService orderService;
+
 
     public ReportsWindowController() {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        this.orderService = new OrderService(factory);
+        this.reportsService = new ReportsService(factory);
     }
 
     @SneakyThrows
@@ -108,23 +111,68 @@ public class ReportsWindowController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        orders.addAll(orderService.findAll());
 
-        for(Order order: orders) {
-            totalRev += order.getCost();
-            if (order.getName().equals("shop")) {
-                revenueShop += order.getCost();
-            } else if (order.getName().equals("PC")) {
-                revenuePc += order.getCost();
+        if(Context.getInstance().getOrders()!= null) {
+
+            Set<Order> orders = Context.getInstance().getOrders();
+
+            for (Order order : orders) {
+                totalRev += order.getCost();
+                if (order.getName().equals("shop")) {
+                    revenueShop += order.getCost();
+                } else if (order.getName().equals("PC")) {
+                    revenuePc += order.getCost();
+                }
             }
-        }
 
-        totalRevenue.setText(String.valueOf(totalRev));
-        revenueOnPC.setText(String.valueOf(revenuePc));
-        revenueOnShop.setText(String.valueOf(revenueShop));
+            totalRevenue.setText(String.valueOf(totalRev));
+            revenueOnPC.setText(String.valueOf(revenuePc));
+            revenueOnShop.setText(String.valueOf(revenueShop));
+        } else {
+            totalRevenue.setText("0");
+            revenueOnPC.setText("0");
+            revenueOnShop.setText("0");
+        }
     }
 
+    @SneakyThrows
     public void endSession(ActionEvent actionEvent) {
 
+        Reports reports = Context.getInstance().getReports();
+
+        Set<Order> orderSet = Context.getInstance().getOrders();
+
+        int profit = 0;
+
+            for (Order order : orderSet) {
+                profit += order.getCost();
+            }
+
+        Date endDate = new Date();
+
+        reports.setEndDate(endDate);
+
+        long diff = endDate.getTime() - reports.getStartDate().getTime();
+
+        reports.setTimeSession(new Time((int) TimeUnit.MILLISECONDS.toHours(diff),
+                (int) TimeUnit.MILLISECONDS.toMinutes(diff),
+                (int) TimeUnit.MILLISECONDS.toSeconds(diff)));
+
+        reports.setOrder(orderSet);
+
+        reports.setProfit(profit);
+
+        Context.getInstance().setReports(reports);
+
+        reportsService.save(reports);
+
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/report.fxml")));
+
+        stage.setScene(new Scene(root));
+        stage.setTitle("Отчёт за смену");
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
+        stage.show();
     }
 }

@@ -7,11 +7,11 @@ import ru.xgame.pavlovo.model.Type;
 
 import java.util.List;
 
-public class TipeService implements Service<Type,String> {
+public class TypeService implements Service<Type,String> {
 
     private final SessionFactory factory;
 
-    public TipeService(SessionFactory factory) {
+    public TypeService(SessionFactory factory) {
         this.factory = factory;
     }
 

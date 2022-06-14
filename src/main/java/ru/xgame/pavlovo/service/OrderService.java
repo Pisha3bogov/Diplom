@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import ru.xgame.pavlovo.model.Order;
 
+import javax.management.Query;
 import java.util.List;
 
 public class OrderService implements Service<Order,Integer> {

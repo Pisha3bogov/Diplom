@@ -17,9 +17,12 @@ import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.xgame.pavlovo.model.Hardware;
+import ru.xgame.pavlovo.model.Reports;
 import ru.xgame.pavlovo.service.HardwareService;
 
+import java.sql.Time;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class GeneralWindowController {
@@ -39,6 +42,7 @@ public class GeneralWindowController {
     private  final ObservableList<Hardware> hardwares = FXCollections.observableArrayList();
 
     private final HardwareService hardwareService;
+    public Button createReport;
 
     public GeneralWindowController() {
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -168,5 +172,22 @@ public class GeneralWindowController {
     private void closeScene(ActionEvent actionEvent){
         Button source = (Button) actionEvent.getSource();
         source.getScene().getWindow().hide();
+    }
+
+    public void createReport(ActionEvent actionEvent) {
+
+        if(Context.getInstance().getReports() == null) {
+            createReport.setDisable(true);
+
+            Date date = new Date();
+            Time timeDay = new Time(8, 0, 0);
+            Time timeNight = new Time(20, 0, 0);
+
+            Reports reports = new Reports(date);
+
+            Context.getInstance().setReports(reports);
+        } else {
+            createReport.setDisable(false);
+        }
     }
 }

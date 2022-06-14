@@ -21,9 +21,13 @@ public class Test {
 
         ShopService shopService = new ShopService(factory);
 
-        List<Order> users = orderService.findAll();
+        ReportsOrderService reportsOrderService = new ReportsOrderService(factory);
 
-        for(Order user : users){
+        ReportsService reportsService = new ReportsService(factory);
+
+        List<Reports> users = reportsService.findAll();
+
+        for(Reports user : users){
             System.out.println(user);
         }
 
@@ -32,5 +36,8 @@ public class Test {
 //        Order order = new Order("shop",160,shop);
 //
 //        orderService.save(order);
+
+
+
     }
 }

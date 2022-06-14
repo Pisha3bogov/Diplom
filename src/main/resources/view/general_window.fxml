@@ -30,6 +30,7 @@
                   <Rectangle2D height="30.0" minX="30.0" minY="30.0" width="30.0" />
                </viewport>
             </ImageView>
+            <Button fx:id="createReport" layoutX="966.0" layoutY="29.0" mnemonicParsing="false" onAction="#createReport" prefHeight="23.0" prefWidth="132.0" text="Начать смену" />
          </children>
       </AnchorPane>
    </top>
