@@ -5,11 +5,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import lombok.SneakyThrows;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.xgame.pavlovo.model.Order;
@@ -19,6 +25,7 @@ import ru.xgame.pavlovo.service.ReportsOrderService;
 import ru.xgame.pavlovo.service.ReportsService;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ReportController implements Initializable {
@@ -83,8 +90,18 @@ public class ReportController implements Initializable {
 
     }
 
+    @SneakyThrows
     public void endSession(ActionEvent actionEvent) {
         Button source = (Button) actionEvent.getSource();
         source.getScene().getWindow().hide();
+
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/startWindow.fxml")));
+
+        stage.setTitle("Авторизация");
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
+        stage.show();
     }
 }

@@ -48,13 +48,14 @@
             <Label fx:id="revenueOnShop" layoutX="212.0" layoutY="181.0" />
             <LineChart fx:id="graphickRevenue" layoutX="279.0" layoutY="49.0" prefHeight="327.0" prefWidth="575.0">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis fx:id="orderAxis" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis fx:id="numberAxis" side="LEFT" />
               </yAxis>
             </LineChart>
             <Button layoutX="713.0" layoutY="384.0" mnemonicParsing="false" onAction="#endSession" prefHeight="32.0" prefWidth="142.0" style="-fx-background-color: RED;" text="Закончить смену" />
+            <Label fx:id="errorLabel" layoutX="319.0" layoutY="400.0" prefHeight="17.0" prefWidth="310.0" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </center>

@@ -3,6 +3,7 @@ package ru.xgame.pavlovo.controller;
 import ru.xgame.pavlovo.model.Admin;
 import ru.xgame.pavlovo.model.Order;
 import ru.xgame.pavlovo.model.Reports;
+import ru.xgame.pavlovo.model.User;
 
 import java.sql.Connection;
 import java.util.HashSet;
@@ -64,5 +65,25 @@ public class Context {
 
     public void setReports(Reports reports) {
         this.reports = reports;
+    }
+
+    private ReportsWindowController reportsWindowController;
+
+    public ReportsWindowController getReportsWindowController() {
+        return reportsWindowController;
+    }
+
+    public void setReportsWindowController(ReportsWindowController reportsWindowController) {
+        this.reportsWindowController = reportsWindowController;
+    }
+
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

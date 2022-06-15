@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -30,6 +31,7 @@
                   <Rectangle2D height="30.0" minX="30.0" minY="30.0" width="30.0" />
                </viewport>
             </ImageView>
+            <TextField fx:id="searchTextField" layoutX="925.0" layoutY="41.0" />
          </children>
       </AnchorPane>
    </top>
