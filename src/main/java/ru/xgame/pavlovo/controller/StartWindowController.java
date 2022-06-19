@@ -39,7 +39,13 @@ public class StartWindowController {
     public void OpenMain(ActionEvent actionEvent) {
 
         admin = adminService.findByLogin(loginField.getText());
-        final boolean exit = admin.getPassword().equals(passwordField.getText());
+        boolean exit = false;
+        if(admin != null) {
+            exit = admin.getPassword().equals(passwordField.getText());
+        } else{
+            Error.setTextFill(Color.RED);
+            Error.setText("Логин или пароль введены не верно");
+        }
 
         try {
            if(exit) {
@@ -81,24 +87,6 @@ public class StartWindowController {
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
         stage.show();
 
-    }
-
-    private void openSceneRegistration(){
-        Stage stage = new Stage();
-
-        Parent root = null;
-
-        try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/registration.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        stage.setTitle("Регистрация");
-        assert root != null;
-        stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
-        stage.show();
     }
 
     public Admin getAdmin() {

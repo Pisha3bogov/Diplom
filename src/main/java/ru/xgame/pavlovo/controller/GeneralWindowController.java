@@ -186,8 +186,8 @@ public class GeneralWindowController {
             Reports reports = new Reports(date);
 
             Context.getInstance().setReports(reports);
-        } else {
-            createReport.setDisable(false);
+
+            createReport.setDisable(true);
         }
     }
 }

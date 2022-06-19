@@ -91,14 +91,5 @@ public class ReportController implements Initializable {
     public void endSession(ActionEvent actionEvent) {
         Button source = (Button) actionEvent.getSource();
         source.getScene().getWindow().hide();
-
-        Stage stage = new Stage();
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/startWindow.fxml")));
-
-        stage.setTitle("Авторизация");
-        stage.setScene(new Scene(root));
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
-        stage.show();
     }
 }

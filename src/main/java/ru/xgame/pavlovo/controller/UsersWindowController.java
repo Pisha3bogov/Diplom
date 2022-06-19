@@ -182,4 +182,16 @@ public class UsersWindowController implements Initializable {
                 i -> initTable()))
                 .play();
     }
+
+    @SneakyThrows
+    public void addUser(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/add_users.fxml")));
+
+        stage.setTitle("Новый пользователь");
+        stage.setScene(new Scene(root));
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/image/x.jpg"))));
+        stage.show();
+    }
 }
