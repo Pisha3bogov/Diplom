@@ -13,7 +13,7 @@ import java.util.Set;
 public class Type {
 
     @Id
-    @Column(name = "type_name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String typeName;
 
     @Column(name = "description")

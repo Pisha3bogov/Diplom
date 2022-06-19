@@ -63,7 +63,7 @@ public class GeneralWindowController {
         typeColumn.setCellValueFactory(u -> new SimpleObjectProperty<>(u.getValue().getType().getTypeName()));
         statusColumn.setCellValueFactory(u -> new SimpleObjectProperty<>(u.getValue().getStatus().getName()));
         userNameColumn.setCellValueFactory(u -> new SimpleObjectProperty<>(
-                u.getValue().getUser()!=null?u.getValue().getUser().getName():null));
+                u.getValue().getUser()!=null?u.getValue().getUser().getLogin():null));
         userBalance.setCellValueFactory(u -> new SimpleObjectProperty<>(
                 u.getValue().getUser()!=null?u.getValue().getUser().getBalance():null));
         userSale.setCellValueFactory(u -> new SimpleObjectProperty<>(

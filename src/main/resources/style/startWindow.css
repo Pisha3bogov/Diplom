@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Alexander;
+    src: url(/fonts/Alexander.otf);
+}
+
+.label {
+    -fx-font-family: Alexander;
+}
+
+.button {
+    -fx-font-family: Alexander;
+}

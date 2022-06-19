@@ -3,7 +3,6 @@ package ru.xgame.pavlovo.controller;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,13 +15,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.SneakyThrows;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import ru.xgame.pavlovo.model.Order;
 import ru.xgame.pavlovo.model.Reports;
-import ru.xgame.pavlovo.service.OrderService;
-import ru.xgame.pavlovo.service.ReportsOrderService;
-import ru.xgame.pavlovo.service.ReportsService;
 
 import java.net.URL;
 import java.util.Objects;
@@ -55,9 +49,12 @@ public class ReportController implements Initializable {
 
         tableView.setEditable(true);
 
-        nameProduct.setCellValueFactory(u -> new SimpleObjectProperty<>(u.getValue().getShop().getNameProduct()));
-        sold.setCellValueFactory(u -> new SimpleObjectProperty<>(u.getValue().getCount()));
-        stock.setCellValueFactory(u -> new SimpleObjectProperty<>(u.getValue().getShop().getCount()));
+        nameProduct.setCellValueFactory(u -> new SimpleObjectProperty<>(
+                u.getValue().getShop() != null? u.getValue().getShop().getNameProduct(): null));
+        sold.setCellValueFactory(u -> new SimpleObjectProperty<>(
+                u.getValue().getShop() != null? u.getValue().getCount() : null));
+        stock.setCellValueFactory(u -> new SimpleObjectProperty<>(
+                u.getValue().getShop() != null?u.getValue().getShop().getCount():null));
 
         tableView.setItems(orders);
 
@@ -82,7 +79,7 @@ public class ReportController implements Initializable {
 
         profitOnPc.setText(String.valueOf(revenuePc));
 
-        profitOnShop.setText(String.valueOf(revenuePc));
+        profitOnShop.setText(String.valueOf(revenueShop));
 
         Context.getInstance().setReports(null);
 

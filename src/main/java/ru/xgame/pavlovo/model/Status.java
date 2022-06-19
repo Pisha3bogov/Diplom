@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Data
@@ -17,4 +18,7 @@ public class Status {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "status")
+    private Set<Hardware> hardware;
 }

@@ -8,23 +8,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.GeneralWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" stylesheets="/style/general_window.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.GeneralWindowController">
    <left>
-      <AnchorPane prefHeight="600.0" prefWidth="175.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="600.0" prefWidth="175.0" styleClass="anchorPane1" stylesheets="/style/startWindow.css" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutY="38.0" mnemonicParsing="false" onAction="#openGeneralWindow" prefHeight="30.0" prefWidth="176.0" text="Компьютеры" />
-            <Button layoutY="79.0" mnemonicParsing="false" onAction="#openUsers" prefHeight="30.0" prefWidth="175.0" text="Пользователи" />
-            <Button layoutY="121.0" mnemonicParsing="false" onAction="#openShop" prefHeight="30.0" prefWidth="175.0" text="Магазин" />
-            <Button layoutY="162.0" mnemonicParsing="false" onAction="#openReports" prefHeight="30.0" prefWidth="175.0" text="Отчеты" />
-            <Button layoutY="469.0" mnemonicParsing="false" onAction="#exitOnAccount" prefHeight="30.0" prefWidth="175.0" text="Выход" />
+            <Button layoutY="38.0" mnemonicParsing="false" onAction="#openGeneralWindow" prefHeight="30.0" prefWidth="176.0" text="Компьютеры">
+             <font>
+                 <Font size="16.0" />
+             </font>
+            </Button>
+            <Button layoutY="79.0" mnemonicParsing="false" onAction="#openUsers" prefHeight="30.0" prefWidth="175.0" text="Пользователи" >
+             <font>
+                 <Font size="16.0" />
+             </font>
+            </Button>
+            <Button layoutY="121.0" mnemonicParsing="false" onAction="#openShop" prefHeight="30.0" prefWidth="175.0" text="Магазин" >
+             <font>
+                 <Font size="16.0" />
+             </font>
+            </Button>
+            <Button layoutY="162.0" mnemonicParsing="false" onAction="#openReports" prefHeight="30.0" prefWidth="175.0" text="Отчеты" >
+             <font>
+                 <Font size="16.0" />
+             </font>
+            </Button>
+            <Button layoutY="469.0" mnemonicParsing="false" onAction="#exitOnAccount" prefHeight="30.0" prefWidth="175.0" text="Выход" >
+             <font>
+                 <Font size="16.0" />
+             </font>
+            </Button>
          </children></AnchorPane>
    </left>
    <top>
-      <AnchorPane prefHeight="81.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="81.0" prefWidth="1280.0" styleClass="anchorPane2" stylesheets="/style/startWindow.css" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="accountName" layoutX="195.0" layoutY="23.0" />
-            <Label layoutX="63.0" layoutY="24.0" text="X-GAME" />
+            <Label layoutX="25.0" layoutY="23.0" text="Компьютерный клуб">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
             <ImageView fx:id="imageAccount" fitHeight="56.0" fitWidth="75.0" layoutX="1170.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1170.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="13.0">
                <viewport>
                   <Rectangle2D height="30.0" minX="30.0" minY="30.0" width="30.0" />
@@ -35,12 +59,12 @@
       </AnchorPane>
    </top>
    <right>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="anchorPane3" stylesheets="/style/startWindow.css" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="viewAnchorPane" stylesheets="/style/startWindow.css" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" prefHeight="527.0" prefWidth="909.0">
+            <TableView fx:id="tableView" prefHeight="527.0" prefWidth="909.0" styleClass="tableView">
               <columns>
                 <TableColumn fx:id="numberColumn" prefWidth="75.0" text="№" />
                 <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Тип" />

@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.OrderWindowController">
+<AnchorPane stylesheets="/style/startWindow.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="319.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.xgame.pavlovo.controller.OrderWindowController">
    <children>
       <ImageView fx:id="imageView" fitHeight="137.0" fitWidth="158.0" layoutX="92.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nameProduct" alignment="TOP_CENTER" layoutX="96.0" layoutY="154.0" prefHeight="17.0" prefWidth="127.0" textAlignment="CENTER" />

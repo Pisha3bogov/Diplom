@@ -141,10 +141,6 @@ public class ReportsWindowController implements Initializable {
             revenueOnShop.setText("0");
         }
 
-        ObservableList<Order> orders = FXCollections.observableArrayList();
-
-        orders.addAll(Context.getInstance().getOrders());
-
     }
 
     @SneakyThrows
